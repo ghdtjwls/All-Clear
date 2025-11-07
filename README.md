@@ -10,7 +10,7 @@
 | ------------------ | --------- |
 | Avg Inference Time | 26.61 ms  | 
 | Estimated FPS      | 37.58 FPS |
-| Avg CPU Usage      | 599.37 %  |
+| Avg CPU Usage      | 99.895 %  |
 | Avg RAM Usage      | 154.31 MB |
 
 
