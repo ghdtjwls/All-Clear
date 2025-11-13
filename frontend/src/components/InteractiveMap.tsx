@@ -2,7 +2,7 @@
 import { Flame, Wind, MapPin } from 'lucide-react';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
-import type { Survivor } from './PriorityList';
+import type { Survivor } from '../lib/api';
 
 interface InteractiveMapProps {
   survivors: Survivor[];

@@ -1,20 +1,10 @@
+// src/components/PriorityList.tsx
 import { Camera, Wifi, AlertTriangle, ChevronRight } from 'lucide-react';
 import { Badge } from './ui/badge';
 import { ScrollArea } from './ui/scroll-area';
 
-export interface Survivor {
-  id: string;
-  rank: number;
-  riskScore: number;
-  location: string;
-  floor: number;
-  room: string;
-  status: 'unconscious' | 'injured' | 'trapped' | 'conscious';
-  detectionMethod: 'cctv' | 'wifi';
-  rescueStatus: 'pending' | 'dispatched' | 'rescued';
-  x: number;
-  y: number;
-}
+// ✅ 프론트에서 사용하는 Survivor 타입을 lib/api.ts 에서 가져오기
+import type { Survivor } from '../lib/api';
 
 interface PriorityListProps {
   survivors: Survivor[];
@@ -38,7 +28,7 @@ const statusText = {
 
 const statusColors = {
   pending: 'text-slate-400',
-  dispatched: 'text-blue-400',
+  dispatched: 'text-red-500',
   rescued: 'text-green-400'
 };
 
@@ -63,27 +53,38 @@ export function PriorityList({ survivors, selectedId, onSelect }: PriorityListPr
         <div className="p-3 space-y-2">
           {survivors.map((survivor) => {
             const isSelected = selectedId === survivor.id;
-            const riskLevel = survivor.riskScore >= 18 ? 'high' : survivor.riskScore >= 12 ? 'medium' : 'low';
-            const riskColor = riskLevel === 'high' ? 'border-red-500 bg-red-950/30' : 
-                             riskLevel === 'medium' ? 'border-orange-500 bg-orange-950/30' : 
-                             'border-green-500 bg-green-950/30';
-            
+            const riskLevel =
+              survivor.riskScore >= 18 ? 'high' :
+              survivor.riskScore >= 12 ? 'medium' :
+              'low';
+
+            const riskColor =
+              riskLevel === 'high'
+                ? 'border-red-500 bg-red-950/30'
+                : riskLevel === 'medium'
+                ? 'border-orange-500 bg-orange-950/30'
+                : 'border-green-500 bg-green-950/30';
+
             return (
               <button
                 key={survivor.id}
                 onClick={() => onSelect(survivor.id)}
-                className={`w-full p-3 rounded-lg border-l-4 ${riskColor} 
+                className={`w-full p-3 rounded-lg border-l-4 ${riskColor}
                   ${isSelected ? 'bg-slate-800 ring-2 ring-blue-500' : 'bg-slate-800/50 hover:bg-slate-800'}
                   transition-all text-left`}
               >
                 <div className="flex items-start justify-between mb-2">
                   <div className="flex items-center gap-2">
                     <span className="text-white">{survivor.rank}.</span>
-                    <AlertTriangle className={`w-4 h-4 ${
-                      riskLevel === 'high' ? 'text-red-500' : 
-                      riskLevel === 'medium' ? 'text-orange-500' : 
-                      'text-green-500'
-                    }`} />
+                    <AlertTriangle
+                      className={`w-4 h-4 ${
+                        riskLevel === 'high'
+                          ? 'text-red-500'
+                          : riskLevel === 'medium'
+                          ? 'text-orange-500'
+                          : 'text-green-500'
+                      }`}
+                    />
                     <span className="text-white">{survivor.riskScore.toFixed(1)}점</span>
                   </div>
                   <ChevronRight className="w-4 h-4 text-slate-400" />
@@ -93,7 +94,7 @@ export function PriorityList({ survivors, selectedId, onSelect }: PriorityListPr
                   <div className="text-slate-300 text-sm">
                     📍 {survivor.location} {survivor.floor}층 {survivor.room}
                   </div>
-                  
+
                   <div className="flex items-center gap-2">
                     <span>{statusIcons[survivor.status]}</span>
                     <span className="text-slate-400 text-sm">{statusText[survivor.status]}</span>
@@ -110,9 +111,9 @@ export function PriorityList({ survivors, selectedId, onSelect }: PriorityListPr
                         {survivor.detectionMethod}
                       </span>
                     </div>
-                    
-                    <Badge 
-                      variant="outline" 
+
+                    <Badge
+                      variant="outline"
                       className={`text-xs ${statusColors[survivor.rescueStatus]} border-current`}
                     >
                       {statusBadges[survivor.rescueStatus]}
