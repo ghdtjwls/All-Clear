@@ -4,3 +4,4 @@ opencv-python-headless
 numpy
 onnxruntime
 python-multipart   # required for UploadFile form-data
+psutil

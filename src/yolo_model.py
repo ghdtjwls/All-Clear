@@ -85,7 +85,8 @@ class YOLOOnnx:
                 cv2.putText(img, label, (x1, label_y), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2)
 
         # Save image
-        cv2.imwrite(save_path, img)
+        if save_path:
+            cv2.imwrite(save_path, img)
 
         result = {
             "image_path": save_path,
