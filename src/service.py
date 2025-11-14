@@ -6,9 +6,9 @@ import numpy as np
 import os
 from collections import Counter
 # yolo_model.py가 같은 디렉토리에 있다고 가정합니다.
-from yolo_model import YOLOOnnx 
+from .yolo_model import YOLOOnnx 
 # 새로 만든 yolo_pose_model.py에서 YOLOPoseOnnx 클래스를 임포트합니다.
-from yolo_pose_model import YOLOPoseOnnx 
+from .yolo_pose_model import YOLOPoseOnnx 
 
 # ----------------- CONFIG -----------------
 MODEL_PATH = "./model/best_noise.onnx"
