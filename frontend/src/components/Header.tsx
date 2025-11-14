@@ -1,6 +1,6 @@
 import { AlertTriangle, Bell, Power } from 'lucide-react';
 import { Badge } from './ui/badge';
-import { Button } from './ui/button';
+// import { Button } from './ui/button';
 
 interface HeaderProps {
   currentTime: string;

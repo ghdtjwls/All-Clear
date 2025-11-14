@@ -1,7 +1,7 @@
 import { Camera, AlertTriangle, MapPin, Activity } from 'lucide-react';
 import { Badge } from './ui/badge';
 import { ScrollArea } from './ui/scroll-area';
-import type { Survivor } from './PriorityList';
+import type { Survivor } from "../lib/api";
 
 interface CCTVMultiViewProps {
   survivors: Survivor[];
@@ -96,8 +96,8 @@ export function CCTVMultiView({
                         variant="outline" 
                         className={`text-xs ${
                           survivor.rescueStatus === 'rescued' ? 'text-green-400 border-green-400' :
-                          survivor.rescueStatus === 'dispatched' ? 'text-blue-400 border-blue-400' :
-                          'text-slate-400 border-slate-400'
+                          survivor.rescueStatus === 'dispatched' ? 'text-white border-blue-600 bg-blue-600'  :
+                          'text-slate-300 border-slate-500'
                         }`}
                       >
                         {survivor.rescueStatus === 'rescued' ? '구조완료' :
@@ -115,7 +115,7 @@ export function CCTVMultiView({
 
                   {/* CCTV 영상 영역 */}
                   <div className="aspect-video bg-slate-800 relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-slate-700 to-slate-800"></div>
+                    <div className="absolute inset-0 bg-linear-to-br from-slate-700 to-slate-800" />
                     
                     {/* CCTV 컨텐츠 */}
                     <div className="absolute inset-0 flex items-center justify-center">
