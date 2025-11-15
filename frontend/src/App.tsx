@@ -191,14 +191,14 @@ export default function App() {
     <div className="h-screen w-screen bg-slate-950 flex flex-col overflow-hidden">
       <Header currentTime="15:29:14" alertLevel={alertLevel} totalSurvivors={survivors.length} />
       <div className="flex-1 grid grid-cols-12 overflow-hidden">
-        <div className="col-span-3">
+        <div className="col-span-3 h-full overflow-y-auto">
           <PriorityList
             survivors={survivors}
             selectedId={selectedId}
             onSelect={setSelectedId}
           />
         </div>
-        <div className="col-span-6">
+        <div className="col-span-6 h-full overflow-y-auto">
           <CCTVMultiView
             survivors={survivors}
             selectedId={selectedId}
