@@ -2,6 +2,23 @@
 
 ![architecture](./architecture.png)
 
+## Start Server
+
+Run
+
+```sh
+uvicorn src.service:app --host 0.0.0.0 --port 8383
+```
+
+
+백그라운드에서 실행하려면
+
+```sh
+bash run_model_test_server.sh
+# OR
+nohup uvicorn src.service:app --host 0.0.0.0 --port 8383 > server.log 2>&1 &
+```
+
 ## File Structure
 
 ⏱️ **Benchmark Result (1000 runs)**
