@@ -12,7 +12,8 @@ class YOLOPoseOnnx:
         """
         모델과 세션을 초기화합니다.
         :param model_path: .onnx 모델 파일 경로
-        :param class_names: ["Standing", "Sitting", "Fall"]
+        :param class_names: ["Crawling", "Falling", "Sitting", "Standing"]
+
         :param input_shape: 모델이 요구하는 입력 이미지 크기 (정사각형 가정)
         """
         self.class_names = class_names
@@ -87,6 +88,7 @@ class YOLOPoseOnnx:
         # 3. 출력 처리 (분류 모델 가정)
         # 출력이 [[score1, score2, score3]] 형태라고 가정
         scores = outputs[0][0] 
+        print(f"Pose model scores: {scores}")
         
         # 4. 가장 높은 점수의 인덱스 찾기 (ArgMax)
         top_class_id = np.argmax(scores)

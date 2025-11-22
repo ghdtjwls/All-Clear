@@ -2,7 +2,7 @@
 
 ![architecture](./architecture.png)
 
-## Model Benchmark
+## File Structure
 
 ⏱️ **Benchmark Result (1000 runs)**
 
@@ -14,6 +14,12 @@
 | Avg RAM Usage      | 154.31 MB |
 
 
+## Model Detail
+
+실제 사용되는 모델은  
+
+- "./model/best_human.onnx", 
+- "./model/best_pose.onnx"
 
 ## Human, Fire, Smoke Detection Test API
 
@@ -163,3 +169,18 @@ Click Try it out -> Choose File -> Execute
 ![](/home/light/Pictures/resources/20251101_225242.png)
 
 
+
+
+## Predict Image With Pose Class
+
+"Crawling", "Falling", "Sitting", "Standing"
+
+Pose model scores: [    0.30319     0.56544    0.060098    0.071273]
+
+![](./output_with_pose.jpg)
+
+
+
+## Predictions
+
+예측한 결과가"./predictions" 폴더에 저장됩니다.

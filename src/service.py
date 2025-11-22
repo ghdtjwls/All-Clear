@@ -11,12 +11,12 @@ from .yolo_model import YOLOOnnx
 from .yolo_pose_model import YOLOPoseOnnx 
 
 # ----------------- CONFIG -----------------
-MODEL_PATH = "./model/best_noise.onnx"
+MODEL_PATH = "./model/best_human.onnx"
 CLASS_NAMES = ["fire", "human", "smoke"]
 
 # --- POSE MODEL CONFIG ---
-POSE_MODEL_PATH = "./model/pose_model.onnx"
-POSE_CLASS_NAMES = ["Standing", "Sitting", "Fall"] # 자세 분류 클래스 이름
+POSE_MODEL_PATH = "./model/best_pose.onnx"
+POSE_CLASS_NAMES = ["Crawling", "Falling", "Sitting", "Standing"]
 
 SAVE_DIR = "./predictions"
 os.makedirs(SAVE_DIR, exist_ok=True)
@@ -103,6 +103,7 @@ async def predict(file: UploadFile = File(...), conf_threshold: float = 0.5):
     if "image_path" not in result:
         result["image_path"] = result_image_path
 
+    print(result)
     return JSONResponse(content=result)
 
 # ----------------- STANDARD PREDICT (IMAGE) -----------------
