@@ -2,7 +2,7 @@
 
 ![architecture](./architecture.png)
 
-## Start Server
+## Start Service
 
 Run
 
